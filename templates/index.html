@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Twilio App</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://source.unsplash.com/1600x900/?technology') no-repeat center center fixed; 
+            background-size: cover;
+            color: white;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+            padding: 40px; /* Increased padding */
+            border-radius: 8px;
+            width: 350px; /* Adjusted width */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Adds space between form elements */
+        }
+
+        .input-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* Aligns items vertically */
+        }
+
+        select, input[type="text"], textarea {
+            padding: 12px; /* Uniform padding for input and select */
+            margin-top: 4px; /* Adjusted margin-top */
+            border: 1px solid #ccc; /* Adds subtle border */
+            border-radius: 5px;
+            width: 100%; /* Ensures full width within container */
+        }
+
+        select {
+            max-width: 80px; /* Restricts the width of the dropdown */
+        }
+
+        input[type="text"] {
+            flex-grow: 1; /* Allows input to fill available space */
+            margin-left: 10px; /* Space between select and input */
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            width: 100%; /* Button width fills the form */
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+        textarea#message {
+            max-width: 92%;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Make a Call</h1>
+        <form action="{{ url_for('make_call') }}" method="POST">
+            <div class="input-group">
+                <select id="country_code" name="country_code">
+                    <option selected value="+91">+91</option>
+                    <option value="+1">+1</option>
+                    <option value="+44">+44</option>
+                </select>
+                <input type="text" id="to_number" name="to_number" placeholder="Enter your phone number" required>
+            </div>
+
+           
+            <textarea id="message" name="message" rows="4" placeholder="Enter message here..."></textarea>
+
+            <button type="submit">Make Call</button>
+        </form>
+    </div>
+</body>
+</html>
