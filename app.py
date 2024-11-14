@@ -28,7 +28,7 @@ def home():
 def make_call():
     to_number = request.form.get('to_number')
     code = request.form.get('country_code')
-    to_number=f"+{code}{to_number}"
+    to_number=f"{code}{to_number}"
     custom_message = request.form.get('message', 'Hello from Flask and Twilio!')
 
     # Make an outbound call using Twilio
